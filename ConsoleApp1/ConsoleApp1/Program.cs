@@ -44,6 +44,43 @@ namespace ConsoleApp1
 
         }
     }
+    class Magazine
+    {
+        private string name;
+        private Frequency period;
+        private DateTime date;
+        private int tiraj;
+        private List<Article> statya = new List<Article> ();
+
+        private string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+       
+        private Frequency Period
+        {
+            get { return period; }
+            set { period=value; }
+        }
+        private DateTime Date
+        {
+            get { return date; }
+            set { date = value; }
+        }
+        private int Tiraj
+        {
+            get { return tiraj; }
+            set { tiraj = value; }
+        }
+        private List<Article> statyaProperty
+        {
+            get { return statya; }
+            set { statya = value; }
+        }
+        
+
 
 }
 
