@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1
@@ -40,47 +41,56 @@ namespace ConsoleApp1
     {
         static void Main()
         {
-
+            
 
         }
     }
     class Magazine
     {
-        private string name;
-        private Frequency period;
-        private DateTime date;
-        private int tiraj;
-        private List<Article> statya = new List<Article> ();
+        private string _name;
+        private Frequency _period;
+        private DateTime _date;
+        private int _tiraj;
+        private Article[] _statya;
 
-        private string Name
+        public Magazine(string _name, Frequency _period, DateTime _date, int _tiraj, Article[] _statya)
         {
-            get { return name; }
-            set { name = value; }
+            this._name = _name;
+            this._period = _period;
+            this._date = _date;
+            this._tiraj = _tiraj;
+            this._statya = _statya;
         }
+         public Magazine()
+        {
 
-       
-        private Frequency Period
-        {
-            get { return period; }
-            set { period=value; }
         }
-        private DateTime Date
+        public string Name
         {
-            get { return date; }
-            set { date = value; }
+            get => _name;
+            set => _name = value;
         }
-        private int Tiraj
+        public Frequency Period
         {
-            get { return tiraj; }
-            set { tiraj = value; }
+            get => Period;
+            set => Period = value;
         }
-        private List<Article> statyaProperty
+        public DateTime Date
         {
-            get { return statya; }
-            set { statya = value; }
+            get => _date;
+            set => _date = value;
         }
-        
-
-
+        public int Tiraj
+        {
+            get => _tiraj;
+            set => _tiraj = value;
+        }
+        public Article[] Statya
+        {
+            get => _statya;
+            set => _statya = value;
+        }
+        private double get
+    }
 }
 
