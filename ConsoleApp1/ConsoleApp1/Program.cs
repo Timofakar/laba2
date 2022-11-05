@@ -90,7 +90,21 @@ namespace ConsoleApp1
             get => _statya;
             set => _statya = value;
         }
-        private double get
+        public double GetAverageRating()
+        {
+            double sum = 0;
+            for (int i = 0; i < Statya.Length; i++)
+                sum = Statya[i].Rating;
+            return sum / Statya.Length;
+        }
+        public void AddArticles(params Article[] newArticles)
+        {
+
+        }
+
+        
+
+       
     }
 }
 
