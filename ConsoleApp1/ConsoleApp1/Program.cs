@@ -90,20 +90,33 @@ namespace ConsoleApp1
                 sum = Statya[i].Rating;
             return sum / Statya.Length;
         }
-        void AddArticles(params Article[] _statya)
+        void AddArticles(params Article[] newstatyas)
         {
-            Array.Resize(ref _statya, _statya.Length + 5);
-            foreach (Object i in _statya)
+            if (newstatyas?.Length == 0)
             {
-                Console.Write("\t{0}", i);
+                return;
             }
-            Console.WriteLine();
+
+            if (_statya == null)
+            {
+                _statya = Array.Empty<Article>();
+            }
+
+            int oldLength = _statya.Length;
+            Array.Resize(ref _statya, _statya.Length + newstatyas.Length);
+            Array.Copy(newstatyas, 0, _statya, oldLength, newstatyas.Length);
         }
-        string ToFullString()
-        {
-            return "\n" + "Наименование:" + Name + "\n" + "ПЕриод:" + Period + "\n" + "Дата:" + "\n" + Date + "\n" + "Тираж:" + "\n" + Tiraj + "\n" + "Список статетй:" + "\n" + Statya;
-        }
-        string ToShortString()
+    }
+    public string ToFullString(string Name, Frequency Period, DateTime Date, int Tiraj, Article[] Statya)
+    {
+        return $"Name = {Name}"
+               + $"\nFrequency = {Period}"
+               + $"\nDate = {Date}"
+               + $"\nTiraj = {Tiraj}"
+               + $"\nArticles = {string.Join<Article>("\n", Statya)}";
+    }
+
+    public string ToShortString()
         {
             return "\n" + "Наименование:" + Name + "\n" + "ПЕриод:" + Period + "\n" + "Дата:" + "\n" + Date + "\n" + "Тираж:" + "\n" + Tiraj + "\n" ;
         }
@@ -119,8 +132,14 @@ namespace ConsoleApp1
                 magazine.Period = Frequency.Yearly;
                 magazine.Date = magazine.Date.AddDays(+1);
                 magazine.Tiraj = 55;
+                magazine.Statya = new Article[]
+                {
+                     new Article("Статья 1", 1, new Person("Семен")),
+                     new Article("Статья 2", 2, new Person("Валера"))
+                };
                
                 Console.WriteLine(magazine.ToShortString());
+                Console.WriteLine(magazine.ToFullString());
                 Console.Read();
             }
         }
