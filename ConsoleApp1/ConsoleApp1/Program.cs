@@ -37,14 +37,7 @@ namespace ConsoleApp1
         public string Name { get; set; }
     }
 
-    class Program
-    {
-        static void Main()
-        {
-            
-
-        }
-    }
+    
     class Magazine
     {
         private string _name;
@@ -72,8 +65,8 @@ namespace ConsoleApp1
         }
         public Frequency Period
         {
-            get => Period;
-            set => Period = value;
+            get => _period;
+            set => _period = value;
         }
         public DateTime Date
         {
@@ -97,14 +90,43 @@ namespace ConsoleApp1
                 sum = Statya[i].Rating;
             return sum / Statya.Length;
         }
-        public void AddArticles(params Article[] newArticles)
+        void AddArticles(params Article[] _statya)
         {
+            Array.Resize(ref _statya, _statya.Length + 5);
+            foreach (Object i in _statya)
+            {
+                Console.Write("\t{0}", i);
+            }
+            Console.WriteLine();
+        }
+        string ToFullString()
+        {
+            return "\n" + "Наименование:" + Name + "\n" + "ПЕриод:" + Period + "\n" + "Дата:" + "\n" + Date + "\n" + "Тираж:" + "\n" + Tiraj + "\n" + "Список статетй:" + "\n" + Statya;
+        }
+        string ToShortString()
+        {
+            return "\n" + "Наименование:" + Name + "\n" + "ПЕриод:" + Period + "\n" + "Дата:" + "\n" + Date + "\n" + "Тираж:" + "\n" + Tiraj + "\n" ;
+        }
+        class Program
+        {
+            static void Main()
+            {
+                var magazine = new Magazine();
+               
+                Console.WriteLine();
 
+                magazine.Name = "ара";
+                magazine.Period = Frequency.Yearly;
+                magazine.Date = magazine.Date.AddDays(+1);
+                magazine.Tiraj = 55;
+               
+                Console.WriteLine(magazine.ToShortString());
+                Console.Read();
+            }
         }
 
-        
 
-       
+
     }
 }
 
