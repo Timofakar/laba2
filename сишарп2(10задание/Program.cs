@@ -18,7 +18,7 @@ namespace _2
                 x = Int32.Parse(i);
                 c= Convert.ToString(x, 2);
                 Console.WriteLine(c);
-                x = x ^ (1 << 3);
+                x = x ^ (x >> 2);
                
 
                b= Convert.ToString(x, 2);
