@@ -15,66 +15,34 @@ class TryCatchDemo
         MessageBox.Show("The program is running!", "Starting"); // Catching and handling exceptions:
         string a, txt;
         int var = 0, sum = 0;
-    lobo:
-        try
-        {// Controlled code
+        do
+        {
+            try
+            {// Controlled code
 
-            // Attempt to convert text to number:
+                a = Interaction.InputBox("Please enter a valid number:","Number");
+                sum += var;
+                var = Int32.Parse(a);
+           }
+            catch
+            {
+                // Отображение сообщения:
 
-
-            a = Interaction.InputBox(
-
-            // Text above the input field:
-
-            "Please enter a valid number:",
-
-            // Window title:
-
-            "Number");
-            sum += var;
-            var = Int32.Parse(a);
+                MessageBox.Show(      "Надо было ввести число!",  "Ошибка",  MessageBoxButtons.OK,   MessageBoxIcon.Error);
 
 
-            if ((var % 5 == 2) & (var % 3 == 1)) goto lobo;
 
+            }// Завершение блока обработки исключений
+        } while ((var % 5 == 2) & (var % 3 == 1));
 
             txt = "Сумма равна " + sum;
 
 
-            MessageBox.Show(txt, "Рeзультат");
+        MessageBox.Show(txt, "Рeзультат");
 
+        // Сообщение о завершении выполнения программы:
 
-        }
-        catch
-        {
-
-            // Отображение сообщения:
-
-            MessageBox.Show(
-
-            // Текст сообщения:
-
-            "Надо было ввести число!",
-
-            // Заголовок окна:
-
-            "Ошибка",
-            // В окне одна кнопка OK:
-
-            MessageBoxButtons.OK,
-
-            // Используется пиктограмма ошибки:
-
-            MessageBoxIcon.Error);
-
-
-
-        }// Завершение блока обработки исключений
-       
-        
-            // Сообщение о завершении выполнения программы:
-
-            MessageBox.Show("Программа завершена!", "Завершение");
+        MessageBox.Show("Программа завершена!", "Завершение");
 
 
         }
